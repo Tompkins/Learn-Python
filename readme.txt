@@ -1,1 +1,1 @@
-I'm learning git
+I creat this resposity to learn python
