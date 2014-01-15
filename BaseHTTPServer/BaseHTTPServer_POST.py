@@ -34,7 +34,7 @@ class PostHandler(BaseHTTPRequestHandler):
                         (field, field_item.filename, file_len))
             else:
                 # Regular form value
-                slef.wfile.write('\t%s=%s\n' %
+                self.wfile.write('\t%s=%s\n' %
                                  (field, form[field].value))
         return
     
