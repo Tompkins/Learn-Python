@@ -17,6 +17,15 @@ class Island():
         """Return size of the island: one dimension.
         """
         return self.grid_size
+    
+    def register(self, animal):
+        """Register animal with island, i.e. put it at the 
+        animal's coordinates
+        """
+        x = animal.x
+        y = animal.y
+        
+        self.grid[x][y] = animal
 
     def __str__(self):
         '''String representation for printing.
