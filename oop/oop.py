@@ -2,14 +2,21 @@
 class Island():
     """Island
     n X n grid where zero value indicates an unoccupied cell."""
-    def __init__(self, n):
+    def __init__(self, n, prey_cnt, predator_cnt):
         """Initialize cell to all 0's, then fill with animals
         """
+        print n, prey_cnt, predator_cnt
         self.grid_size = n
         self.grid = []
         for i in range(n):
             row = [0]*n         # row is a list of n zeros
             self.grid.append(row)
+        self.init_animals(prey_cnt, predator_cnt)
+
+    def size(self):
+        """Return size of the island: one dimension.
+        """
+        return self.grid_size
 
     def __str__(self):
         '''String representation for printing.
