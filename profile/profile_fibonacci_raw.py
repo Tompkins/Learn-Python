@@ -17,4 +17,5 @@ def fib_seq(n):
         seq.extend(fib_seq(n-1))
     seq.append(fib(n))
     return seq
-  
+
+profile.run('print fib_seq(20); print')
