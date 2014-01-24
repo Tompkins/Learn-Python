@@ -18,6 +18,8 @@ class Island():
         """
         return self.grid_size
 
+    def register(self.animal):
+
     def __str__(self):
         '''String representation for printing.
         (0,0) will be in the lower-left corner.
