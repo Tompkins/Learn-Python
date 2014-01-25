@@ -51,5 +51,9 @@ class Animal(object):
         self.x = x
         self.y = y
 
+    def position(self):
+        """Return coordinate of current position"""
+        return self.x, self.y
+
     def __str__(self):
         return self.name
