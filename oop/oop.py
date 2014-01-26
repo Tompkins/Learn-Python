@@ -29,7 +29,7 @@ class Island():
     
     def animal(self, x, y):
         if 0 < = x <= self.size and 0 <= y <= self.size:
-	    return self.island[x][y]
+	    return self.grid[x][y]
 	else:
 	    return -1 		# outside island boundary
 
