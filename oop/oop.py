@@ -26,6 +26,12 @@ class Island():
         y = animal.y
         
         self.grid[x][y] = animal
+    
+    def animal(self, x, y):
+        if 0 < = x <= self.size and 0 <= y <= self.size:
+	    return self.island[x][y]
+	else:
+	    return -1 		# outside island boundary
 
     def __str__(self):
         '''String representation for printing.
