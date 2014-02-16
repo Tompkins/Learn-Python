@@ -5,13 +5,13 @@ class Island():
     def __init__(self, n, prey_cnt=0, predator_cnt=0):
         """Initialize cell to all 0's, then fill with animals
         """
-        print n, prey_cnt, predator_cnt
+        # print n, prey_cnt, predator_cnt
         self.grid_size = n
         self.grid = []
         for i in range(n):
             row = [0]*n         # row is a list of n zeros
             self.grid.append(row)
-        # self.init_animals(prey_cnt, predator_cnt)
+        self.init_animals(prey_cnt, predator_cnt)
 
     def size(self):
         """Return size of the island: one dimension.
@@ -28,10 +28,31 @@ class Island():
         self.grid[x][y] = animal
     
     def animal(self, x, y):
-        if 0 < = x <= self.size and 0 <= y <= self.size:
+        '''Return animal at location (x, y)'''
+        if 0 < = x <= self.grid_size and 0 <= y <= self.grid_size:
 	    return self.grid[x][y]
 	else:
 	    return -1 		# outside island boundary
+
+    def init_animals(self, prey_cnt, self.predator_cnt):
+        """ Put some initial animals on the island"""
+        cnt = 0
+        # While loop continues until prey_cn unoccupied positions are found
+        while cnt < prey_cnt:
+            x = random.randint(0, self.grid_size-1)
+            y = random.randint(0, self.grid_size-1)
+            if not self.animal(x, y):
+                new_prey = Prey(island=slef, x=x, y=y)
+                cnt += 1
+                self.register(new_prey)
+        cnt = 0
+        while cnt < predator_cnt:
+            x = random.randint(0, self.grid_size-1)
+            y = random.randint(0, self.grid_size-1)
+            if not self.animal(x, y):
+                new_pred = Predator(island=self, x=x, y=y)
+                cnt += 1
+                self.register(new_pred)
 
     def __str__(self):
         '''String representation for printing.
