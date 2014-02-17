@@ -6,7 +6,7 @@ def brackets_match(n):
     for i in n:
         if i == '(':
             left_brackets.append(i)
-        elif i == ')':
+        elif i == ')' and len(left_brackets) != 0:
             left_brackets.pop()
     if len(left_brackets) == 0:
         return True
