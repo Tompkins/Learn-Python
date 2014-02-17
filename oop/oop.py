@@ -54,6 +54,9 @@ class Island():
                 cnt += 1
                 self.register(new_pred)
 
+    def remove(self, x, y):
+        self.grid[x][y] = 0
+
     def __str__(self):
         '''String representation for printing.
         (0,0) will be in the lower-left corner.
