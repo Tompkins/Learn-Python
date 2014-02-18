@@ -29,12 +29,12 @@ class Island():
     
     def animal(self, x, y):
         '''Return animal at location (x, y)'''
-        if 0 < = x <= self.grid_size and 0 <= y <= self.grid_size:
+        if 0 <= x <= self.grid_size and 0 <= y <= self.grid_size:
 	    return self.grid[x][y]
 	else:
 	    return -1 		# outside island boundary
 
-    def init_animals(self, prey_cnt, self.predator_cnt):
+    def init_animals(self, prey_cnt, predator_cnt):
         """ Put some initial animals on the island"""
         cnt = 0
         # While loop continues until prey_cn unoccupied positions are found
@@ -91,6 +91,20 @@ class Animal(object):
 class Prey(Animal):
     def __init__(self, island, x = 0, y = 0, s = 'O'):
         Animal.__init__(self, island, x, y, s)
+
+    def move(self):
+        """Move to an open, neighboring position."""
+        # neighbor offsets
+        offset = [(-1, 1),(0, 1),(1, 1),(-1, 0),(1, 0),(-1, -1),(0, -1),(1, -1)]
+        for i in range(len(offset)):
+            x = self.x + offset[i][0]   # neighboring coordinates
+            y = self.y + offset[i][1]
+            if self.island.animal(x, y) == 0:       # neighboring spot is open
+                self.island.remove(self)    # remove from current spot
+                self.x = x      # new coordinates
+                self.y = y
+                self.island.register(self)  # register new coordinates
+                break       # finished with move
 
 class Predator(Animal):
     def __init__(self, island, x = 0, y = 0, s = 'X'):
