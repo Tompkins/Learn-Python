@@ -54,7 +54,9 @@ class Island():
                 cnt += 1
                 self.register(new_pred)
 
-    def remove(self, x, y):
+    def remove(self, animal):
+        x = animal.x
+        y = animal.y
         self.grid[x][y] = 0
 
     def __str__(self):
