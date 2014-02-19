@@ -111,3 +111,23 @@ class Prey(Animal):
 class Predator(Animal):
     def __init__(self, island, x = 0, y = 0, s = 'X'):
         Animal.__init__(self, island, x, y, s)
+
+def main():
+    # initialization of the simulation
+    royale = Island(5, 1, 1)    # 5x5 island, 1 predator, 1 prey
+    time_steps = 20
+
+    # run the event loop
+    island_size = royale.size()
+    cnt = 0
+    while cnt < time_steps:
+        print royale    # print the island
+        for x in range(island_size):
+            for y in range(island_size):
+                animal = royale.animal(x, y)
+                if animal:
+                    animal.move()
+        cnt += 1
+
+if __name__ == '__main__':
+    main()
