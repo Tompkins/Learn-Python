@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import random
+
 class Island():
     """Island
     n X n grid where zero value indicates an unoccupied cell."""
@@ -42,7 +44,7 @@ class Island():
             x = random.randint(0, self.grid_size-1)
             y = random.randint(0, self.grid_size-1)
             if not self.animal(x, y):
-                new_prey = Prey(island=slef, x=x, y=y)
+                new_prey = Prey(island=self, x=x, y=y)
                 cnt += 1
                 self.register(new_prey)
         cnt = 0
@@ -111,6 +113,20 @@ class Prey(Animal):
 class Predator(Animal):
     def __init__(self, island, x = 0, y = 0, s = 'X'):
         Animal.__init__(self, island, x, y, s)
+
+    def move(self):
+        """Move to an open, neighboring position."""
+        # neighbor offsets
+        offset = [(-1, 1),(0, 1),(1, 1),(-1, 0),(1, 0),(-1, -1),(0, -1),(1, -1)]
+        for i in range(len(offset)):
+            x = self.x + offset[i][0]   # neighboring coordinates
+            y = self.y + offset[i][1]
+            if self.island.animal(x, y) == 0:       # neighboring spot is open
+                self.island.remove(self)    # remove from current spot
+                self.x = x      # new coordinates
+                self.y = y
+                self.island.register(self)  # register new coordinates
+                break       # finished with move
 
 def main():
     # initialization of the simulation
