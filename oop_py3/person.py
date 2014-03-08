@@ -6,7 +6,7 @@ class Person:
         self.name = name
         self.job = job
         self.pay = pay
-
+        
     def lastName(self):
         return self.name.split()[-1]
 
@@ -15,6 +15,10 @@ class Person:
 
     def __str__(self):
         return '[Person: %s, %s]' % (self.name, self.pay)
+
+class Manager(Person):
+    def giveRaise(self, percent, bonus=0.1):
+        Person.giveRaise(self, percent + bonus)     # good: argument original
     
 if __name__ == '__main__':
     bob = Person('Bob Smith')
@@ -24,3 +28,7 @@ if __name__ == '__main__':
     print(bob.lastName(), sue.lastName())
     sue.giveRaise(.10)
     print(sue)
+    tom = Manager('Tom Jones', 'mgr', 50000)
+    tom.giveRaise(0.1)
+    print(tom.lastName())
+    print(tom)
