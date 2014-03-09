@@ -22,6 +22,7 @@ class Manager(Person):
         
     def giveRaise(self, percent, bonus=0.1):
         Person.giveRaise(self, percent + bonus)     # good: argument original
+
     
 if __name__ == '__main__':
     bob = Person('Bob Smith')
@@ -39,3 +40,24 @@ if __name__ == '__main__':
     # for object in (bob, sue, tom):
     #     object.giveRaise(0.1)
     #     print(object)
+    # Aggregate embedded objects into a computer
+    class Department:
+        def __init__(self, *args):
+            self.members = list(args)
+
+        def addMember(self, person):
+            self.members.append(person)
+
+        def giveRaise(self, percent):
+            for person in self.members:
+                person.giveRaise(percent)
+
+        def showAll(self):
+            for person in self.members:
+                print(person)
+
+    development = Department(bob, sue)       # Embed object in a composite
+    development.addMember(tom)
+    development.giveRaise(.10)               # run embedded objects' giveRaise
+    development.showAll()                    # Runs embedded objects' __str__
+
