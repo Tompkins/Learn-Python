@@ -2,6 +2,9 @@
 # Filename: person.py
 
 class Person:
+    """
+    Create and process person records
+    """
     def __init__(self, name, job=None, pay=0):
         self.name = name
         self.job = job
@@ -14,9 +17,13 @@ class Person:
         self.pay = int(self.pay * (1 + percent))
 
     def __str__(self):
-        return '[Person: %s, %s]' % (self.name, self.pay)
+        return '[Person: job = %s, name = %s, pay = %s]' % \
+               (self.job,self.name, self.pay)
 
 class Manager(Person):
+    """
+    A customized Person with special requirements
+    """
     def __init__(self, name, pay):
         Person.__init__(self, name, 'mgr', pay)
         
@@ -41,6 +48,7 @@ if __name__ == '__main__':
     #     object.giveRaise(0.1)
     #     print(object)
     # Aggregate embedded objects into a computer
+    """
     class Department:
         def __init__(self, *args):
             self.members = list(args)
@@ -60,4 +68,4 @@ if __name__ == '__main__':
     development.addMember(tom)
     development.giveRaise(.10)               # run embedded objects' giveRaise
     development.showAll()                    # Runs embedded objects' __str__
-
+    """
