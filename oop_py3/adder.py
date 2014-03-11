@@ -1,25 +1,31 @@
 class Adder:
-    def add(self, x, y):
+    def __init__(self, data):
+        self.data = data
+    def add(self, y):
         print('Not implemented')
+    def __add__(self, y):
+        return self.add(y)
 
 class ListAdder(Adder):
-    def add(self, x, y):
+    def add(self, y):
         for i in y:
-            x.append(i)
-        print(x)
+            self.data.append(i)
+        print(self.data)
 
 class DictAdder(Adder):
-    def add(self, x, y):
+    def add(self, y):
         for keys in y:
-            if keys in x:
+            if keys in self.data:
                 pass
             else:
-                x[keys] = y[keys]
-        print(x)
+                self.data[keys] = y[keys]
+        print(self.data)
         
 if __name__ == '__main__':
-    A = ListAdder()
-    A.add([1, 2, 3], [4, 5, 6, 7, 8])
-    B = DictAdder()
-    B.add({1:'2'}, {1:'3', 2:'4'})
+    A = ListAdder([1, 2, 3])
+    A.add([4, 5, 6, 7, 8])
+    A + [9]
+    B = DictAdder({1:'2'})
+    B.add({1:'3', 2:'4'})
+    B + {3:'3'}
         
