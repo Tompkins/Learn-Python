@@ -30,6 +30,7 @@ class PizzaRobot(Chef):
 if __name__ == '__main__':
     bob = PizzaRobot('bob')
     print(bob)
+    bob.work()
     bob.giveRaise(0.2)
     print(bob); print()
 
