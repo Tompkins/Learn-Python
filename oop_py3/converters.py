@@ -1,6 +1,6 @@
 from streams import Processor
 
-class Uppercase(Process):
+class Uppercase(Processor):
     def converter(self, data):
         return data.upper()
 
