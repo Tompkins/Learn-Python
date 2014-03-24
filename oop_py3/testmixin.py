@@ -9,7 +9,7 @@ class Super:
     def ham(self):
         pass
 
-class Sub(Super, ListInstance):     # Mix in ham and s __str__
+class Sub(Super, ListInherited):     # Mix in ham and s __str__
     def __init__(self):             # listers have access to self
         Super.__init__(self)
         self.data2 = 'eggs'         # More instance attrs
