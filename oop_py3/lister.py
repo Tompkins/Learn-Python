@@ -78,9 +78,9 @@ class ListTree:
     def __attrnames(self, obj, indent):
         spaces = ' ' * (indent + 4)
         result = ''
-        for attr in sorted(object.__dict__):
+        for attr in sorted(obj.__dict__):
             if attr.startswith('__') and attr.endswith('__'):
-                result += spaces + '{0}=<>'.format(attr)
+                result += spaces + '{0}=<>\n'.format(attr)
             else:
                 result += spaces + '{0}={1}\n'.format(attr, getattr(obj, attr))
         return result
