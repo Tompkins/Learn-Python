@@ -1,4 +1,5 @@
 import time
+import sys
 
 class timer:
     def __init__(self, func):
@@ -17,9 +18,14 @@ class timer:
 def listcomp(N):
     return [x * 2 for x in range(N)]
 
-@timer
-def mapcall(N):
-    return list(map((lambda x: x * 2), range(N)))
+if sys.version_info[0] == 2:
+    @timer
+    def mapcall(N):
+        return map((lambda x: x * 2), range(N))
+else:
+    @timer
+    def mapcall(N):
+        return list(map((lambda x: x * 2), range(N)))
 
 result = listcomp(5)
 listcomp(50000)
